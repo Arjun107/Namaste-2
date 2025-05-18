@@ -1,0 +1,21 @@
+{
+  "name": "namaste-2",
+  "version": "1.0.0",
+  "description": "this is to learn",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "Arsh Dawra",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^2.15.1"
+  },
+  "dependencies": {
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "browserlist": [
+    "last 2 Chrome version"
+  ]
+}
