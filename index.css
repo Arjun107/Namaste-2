@@ -32,10 +32,9 @@
     margin: 5px  ;
     padding: 5px;
     width: 200px;
-    height: 300px;
 }
 
-.res-card :hover{
+.res-container :hover{
     cursor:pointer;
     border: 1px solid black;
 }
@@ -45,6 +44,6 @@
 }
  
 .res-logo{
-    width: 150px;
+    width: 112px
     
 }
