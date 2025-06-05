@@ -5,7 +5,11 @@ import { useState, useEffect } from "react";
 const Body = () => {
   //Local state variable - Super powerful variable
 
-  const [listofResturant ,setListofResturant] = useState(resList);
+  const [listofResturant, setListofResturant] = useState(resList);
+
+  useEffect(() => {
+    console.log("useeffect called");
+  }, []);
 
   let listofResturantjs = [
     {
@@ -52,14 +56,13 @@ const Body = () => {
     },
   ];
 
-  return ( 
+  return ( +
     <div className="body">
       <div className="filter">
         <div className="filter">
           <button
             className="filter-button"
             onClick={() => {
-                  
               const filterlist = listofResturant.filter(
                 (res) => res.info.avgRating > 4
               );
