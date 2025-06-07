@@ -1,7 +1,18 @@
 .header{
-    display: flex;
-    justify-content: space-between  ;
-    border: 1px solid orange;
+ width: 100%;
+  background: rgba(128, 90, 213, 0.15); /* Purple glass look */
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 16px rgba(128, 90, 213, 0.2);
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 0 0 16px 16px;
+  border-bottom: 1px solid rgba(128, 90, 213, 0.25);
+
 }
 
 .logo{
@@ -27,17 +38,19 @@
     display: flex;
     
     flex-wrap: wrap;
+    
 }
 
 .res-card{
     margin: 5px  ;
     padding: 5px;
     width: 200px;
+    border-radius: 25px;
 }
 
-.res-container :hover{
-    cursor:pointer;
-    border: 1px solid black;
+.res-card:hover {
+  cursor: pointer;
+  border: 2px solid rgb(231, 6, 231);
 }
  
 .search {
@@ -52,4 +65,18 @@
 .filter-button{
     margin: 10px;
     cursor: pointer;
+}
+
+.shimmer-container{
+    display : flex;
+    flex-wrap: wrap;
+
+}
+
+.shimmmer-cards{
+    width: 200px;
+    height: 400px;
+    margin: 10px;
+    background-color: rgb(240, 240, 240);
+    border-radius: 25px;
 }

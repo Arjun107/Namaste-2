@@ -1,62 +1,34 @@
 import ResturantCard from "./RestaurantCard";
-import resList from "../../utils/mockData";
 import { useState, useEffect } from "react";
+import Shimmer from "./Shimmer";
 
 const Body = () => {
   //Local state variable - Super powerful variable
 
-  const [listofResturant, setListofResturant] = useState(resList);
+  const [listofResturant, setListofResturant] = useState([]);
 
   useEffect(() => {
-    console.log("useeffect called");
+    fetchData();
   }, []);
 
-  let listofResturantjs = [
-    {
-      info: {
-        id: "377799",
-        name: "Pizza Hut",
-        cloudinaryImageId:
-          "RX_THUMBNAIL/IMAGES/VENDOR/2025/5/22/4c2e88c8-d95f-4b7e-b28a-07b2f3f1bf5d_377799.JPG",
+  const fetchData = async () => {
+    const data = await fetch(
+      "https://thingproxy.freeboard.io/fetch/https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.5355161&lng=77.3910265&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+    );
 
-        costForTwo: "₹350 for two",
-        cuisines: ["Pizzas"],
-        avgRating: 4.2,
+    const json = await data.json();
+    console.log(json);
 
-        avgRatingString: "4.2",
-      },
-    },
-    {
-      info: {
-        id: "377789",
-        name: "Dominos",
-        cloudinaryImageId:
-          "RX_THUMBNAIL/IMAGES/VENDOR/2025/5/22/4c2e88c8-d95f-4b7e-b28a-07b2f3f1bf5d_377799.JPG",
+    setListofResturant(
+      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
+  };
 
-        costForTwo: "₹350 for two",
-        cuisines: ["Pizzas"],
-        avgRating: 3.5,
+  if(listofResturant.length === 0 ){
+    return<Shimmer/>
+  }
 
-        avgRatingString: "3.5",
-      },
-    },
-    {
-      info: {
-        id: "377759",
-        name: "Mc Doland",
-        cloudinaryImageId:
-          "RX_THUMBNAIL/IMAGES/VENDOR/2025/5/22/4c2e88c8-d95f-4b7e-b28a-07b2f3f1bf5d_377799.JPG",
-
-        costForTwo: "₹350 for two",
-        cuisines: ["Pizzas"],
-        avgRating: 4.1,
-
-        avgRatingString: "3.5",
-      },
-    },
-  ];
-
-  return ( +
+  return (
     <div className="body">
       <div className="filter">
         <div className="filter">
@@ -64,7 +36,7 @@ const Body = () => {
             className="filter-button"
             onClick={() => {
               const filterlist = listofResturant.filter(
-                (res) => res.info.avgRating > 4
+                (res) => res.info.avgRating > 4.5
               );
               console.log(listofResturant);
               setListofResturant(filterlist);
