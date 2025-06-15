@@ -6,6 +6,8 @@ const Body = () => {
   //Local state variable - Super powerful variable
 
   const [listofResturant, setListofResturant] = useState([]);
+  const [filteredresturant, setfilteredResturant] = useState([]);
+
   const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
@@ -21,6 +23,9 @@ const Body = () => {
     console.log(json);
 
     setListofResturant(
+      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
+    setfilteredResturant(
       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
@@ -46,7 +51,7 @@ const Body = () => {
                 res.info.name.toLowerCase().includes(searchText)
               );
 
-              setListofResturant(filteredresturant);
+              setfilteredResturant(filteredresturant);
             }}
           >
             search
@@ -66,7 +71,7 @@ const Body = () => {
         </button>
       </div>
       <div className="res-container">
-        {listofResturant.map((restaurant) => (
+        {filteredresturant.map((restaurant) => (
           <ResturantCard key={restaurant.info.id} resData={restaurant} />
         ))}
       </div>
