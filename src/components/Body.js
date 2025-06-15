@@ -6,6 +6,7 @@ const Body = () => {
   //Local state variable - Super powerful variable
 
   const [listofResturant, setListofResturant] = useState([]);
+  const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
     fetchData();
@@ -24,27 +25,45 @@ const Body = () => {
     );
   };
 
-  if(listofResturant.length === 0 ){
-    return<Shimmer/>
-  }
-
-  return (
+  return listofResturant.length === 0 ? (
+    <Shimmer />
+  ) : (
     <div className="body">
       <div className="filter">
-        <div className="filter">
+        <div className="search">
+          <input
+            type="text"
+            className="search-box"
+            value={searchText}
+            onChange={(e) => {
+              setSearchText(e.target.value);
+            }}
+          />
           <button
-            className="filter-button"
             onClick={() => {
-              const filterlist = listofResturant.filter(
-                (res) => res.info.avgRating > 4.5
+              //filter resturant
+              const filteredresturant = listofResturant.filter((res) =>
+                res.info.name.toLowerCase().includes(searchText)
               );
-              console.log(listofResturant);
-              setListofResturant(filterlist);
+
+              setListofResturant(filteredresturant);
             }}
           >
-            Top Rated resturantS
+            search
           </button>
         </div>
+        <button
+          className="filter-button"
+          onClick={() => {
+            const filterlist = listofResturant.filter(
+              (res) => res.info.avgRating > 4.5
+            );
+            console.log(listofResturant);
+            setListofResturant(filterlist);
+          }}
+        >
+          Top Rated resturant
+        </button>
       </div>
       <div className="res-container">
         {listofResturant.map((restaurant) => (

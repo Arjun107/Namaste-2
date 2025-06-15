@@ -80,3 +80,12 @@
     background-color: rgb(240, 240, 240);
     border-radius: 25px;
 }
+.login-button{
+    padding: 0 20px;
+    cursor: pointer;
+
+}
+
+.filter{
+    display: flex;
+}
