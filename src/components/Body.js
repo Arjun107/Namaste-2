@@ -31,7 +31,7 @@ const Body = () => {
   };
 
   return listofResturant.length === 0 ? (
-    <Shimmer />
+    <Shimmer />     
   ) : (
     <div className="body">
       <div className="filter">
@@ -46,7 +46,7 @@ const Body = () => {
           />
           <button
             onClick={() => {
-              //filter resturant
+              //filter resturant   
               const filteredresturant = listofResturant.filter((res) =>
                 res.info.name.toLowerCase().includes(searchText)
               );
