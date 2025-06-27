@@ -60,7 +60,7 @@ const Body = () => {
         <button
           className="filter-button"
           onClick={() => {
-            const filterlist = listofResturant.filter(
+            const filterlist = listofResturant.filter( 
               (res) => res.info.avgRating > 4.5
             );
             console.log(listofResturant);
